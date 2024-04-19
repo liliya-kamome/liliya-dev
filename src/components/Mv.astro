@@ -1,0 +1,142 @@
+---
+import Cube from "./Cube.astro";
+---
+
+<div class="mv">
+  <div class="mv-inner">
+    <div class="mv-inner__content">
+      <p class="mv-inner__title">
+        Welcome to <span class="mv-inner__title-span">liliya.dev</span> 🥳
+      </p>
+      <p class="mv-inner__text">
+        週に1投稿を目標で運営をしています。<br
+          class="w1024-block w683-none"
+        />自分の興味のある内容を投稿します。
+      </p>
+      <a href="/about" class="mv-inner__link"
+        >about me
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 -960 960 960"
+          width="24"
+          class="mv-inner__link-arrow"
+          ><path
+            d="M421.461-480 237.692-664 266-692.308 478.308-480 266-267.692 237.692-296l183.769-184Zm244 0L481.692-664 510-692.308 722.308-480 510-267.692 481.692-296l183.769-184Z"
+          ></path></svg
+        >
+      </a>
+    </div>
+    <Cube />
+  </div>
+</div>
+
+<style lang="scss">
+  @use "../styles/variables.scss" as v;
+
+  .mv {
+    padding-top: 7em;
+  }
+  .mv-inner {
+    padding: 15em 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    @include v.mq(w820) {
+      justify-content: space-between;
+    }
+    @include v.mq(w683) {
+      flex-direction: column-reverse;
+      padding: 10em 0;
+    }
+    &__title {
+      font-size: 6rem;
+      width: fit-content;
+      min-height: 48px;
+      margin-bottom: 0.25em;
+      color: v.$black;
+      @include v.mq(w1024) {
+        font-size: min(5rem, 5vw);
+      }
+      @include v.mq(w820) {
+        font-size: 5rem;
+      }
+      @include v.mq(w683) {
+        font-size: min(5rem, 7vw);
+      }
+      @include v.mq(w428) {
+        font-size: min(3.8em, 8vw);
+      }
+      @include v.mq(w325) {
+        font-size: 2.9rem;
+      }
+    }
+    &__title-span {
+      background-image: linear-gradient(120deg, #d26ee0 0%, #98ddfd 100%);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    &__text {
+      font-size: 1.8rem;
+      color: v.$black;
+      min-height: 44px;
+      @include v.mq(w428) {
+        font-size: 1.6rem;
+        line-height: 1.4;
+      }
+    }
+    &__link {
+      color: v.$black;
+      border-radius: 3px;
+      border: solid 1px #e4e4e7;
+      font-size: 1.6rem;
+      padding: 0 2em 0 0.8em;
+      display: inline-block;
+      margin-top: 1em;
+      transition: 0.5s all;
+      position: relative;
+      @include v.mq(w428) {
+        line-height: 27px;
+        height: 30px;
+      }
+      &:hover {
+        background-color: v.$light-mode-bg;
+        .mv-inner__link-arrow {
+          right: 3%;
+        }
+      }
+    }
+    &__link-arrow {
+      font-size: 1.3rem;
+      position: absolute;
+      transition: all 0.5s;
+      right: 6%;
+      top: 10%;
+      display: block;
+    }
+  }
+  :root[class="dark-mode"] {
+    .mv-inner {
+      color: v.$dark-mode-text;
+      &__title {
+        color: v.$dark-mode-text;
+      }
+      &__text {
+        color: v.$dark-mode-text;
+      }
+      &__link {
+        background-color: v.$dark-mode-bg;
+        border: solid 1px v.$dark-mode-border;
+        color: v.$dark-mode-text;
+        padding: 0em 2em 0em 0.8em;
+      }
+      &__link-arrow {
+        fill: #fff;
+      }
+    }
+  }
+</style>
+
+<script></script>

@@ -1,0 +1,27 @@
+---
+const { title, className } = Astro.props;
+---
+
+<h2 class=`sectionTitle + ${className}`>{title}</h2>
+
+<style lang="scss">
+  @use "../../styles/_variables.scss" as v;
+  .sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: v.$black;
+    margin-bottom: 1em;
+    width: fit-content;
+    @include v.mq(w428) {
+      font-size: 1.8rem;
+    }
+  }
+  .pageTitle {
+    text-align: center;
+  }
+  :root[class="dark-mode"] {
+    .sectionTitle {
+      color: #fff;
+    }
+  }
+</style>

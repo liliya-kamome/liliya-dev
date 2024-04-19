@@ -10,8 +10,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.5.18",
     "@astrojs/check": "^0.5.10",
+    "@astrojs/react": "^3.3.0",
+    "@pagefind/default-ui": "^1.1.0",
+    "astro": "^4.5.18",
+    "dayjs": "^1.11.10",
+    "microcms-js-sdk": "^3.1.0",
+    "pagefind": "^1.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "sass": "^1.75.0",
     "typescript": "^5.4.5"
   }
 }

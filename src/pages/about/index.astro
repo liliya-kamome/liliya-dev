@@ -1,0 +1,192 @@
+---
+import '../../styles/main.scss';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Modal from '../../components/ui/Modal.astro';
+import Layout from '../../layouts/Layout.astro';
+import { ToolNav } from '../../components/ui/ToolNav';
+---
+
+<Layout title="このサイトについて | liliya.dev" ogTitle="about" desc="このサイトについて">
+  <Header />
+  <main class="about" data-pagefind-ignore="all">
+    <div class="about__prof">
+      <div class="about__prof-animation"></div>
+    </div>
+    <button class="about__view-json" id="jsonView_btn">View Profile</button>
+    <Modal />
+    <h2 class="about__h2">このサイトについて</h2>
+    <p class="about__text">
+      このサイトは、"Astro" + "React" + "microCMS" + "Vercle"によって作成されています。<br
+      />週に1記事の投稿を目安にフロントエンド系の記事を投稿していきます。
+    </p>
+    <p class="about__text">
+      主に個人的な知識のアウトプットのために運営をするものであり、個人の意見を反映しておりますので記事の修正、指摘等ございましたらX(旧Twitter)のDMにお手数ですがご連絡いただけますと幸甚です。
+    </p>
+    <h2 class="about__h2">経歴</h2>
+    <ul class="about__career">
+      <li class="about__career-item">
+        <span class="about__career-year">2020</span>IT・教育系の東京都内の企業に就職
+      </li>
+      <li class="about__career-item">
+        <span class="about__career-year">2024</span>金融・映画系の東京都内の企業に転職
+      </li>
+      <li class="about__career-item">
+        <span class="about__career-year">????</span>
+        未定
+      </li>
+    </ul>
+  </main>
+  <ToolNav />
+  <Footer />
+</Layout>
+
+<style lang="scss">
+  @use '../../styles/_variables.scss' as v;
+  .about {
+    @include v.common-width();
+    padding: 0 1.6em;
+    margin: 15em auto auto;
+    &__prof {
+      width: fit-content;
+      margin: 0 auto;
+      border-radius: 50%;
+      position: relative;
+      &::before {
+        content: '🥨';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        font-size: 6rem;
+      }
+    }
+    &__prof-animation {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      background: transparent;
+      border: 3px solid rgba(0, 102, 255, 0.1);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 100px;
+      color: #bfa7e4;
+      box-shadow: 0 0 20px rgba(255, 222, 233, 0.15);
+      position: relative;
+      animation: animate_circle 5s linear infinite;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #bfa7e4;
+        top: 43px;
+        right: -8px;
+        box-shadow: 0 0 20px 5px #ffdee9;
+      }
+    }
+
+    &__view-json {
+      color: v.$black;
+      border-radius: 3px;
+      border: solid 1px #e4e4e7;
+      padding: 0.2em 1em;
+      font-size: 1.4rem;
+      width: fit-content;
+      vertical-align: baseline;
+      transition: 0.5s all;
+      display: block;
+      margin: 3em auto auto auto;
+      &:hover {
+        background-color: #f4f4f5;
+      }
+    }
+    &__h2 {
+      font-size: 2.3rem;
+      margin-bottom: 1em;
+      margin-top: 3em;
+      @include v.mq(w428) {
+        font-size: 1.8rem;
+      }
+    }
+    &__text {
+      font-size: 1.6rem;
+      margin-bottom: 1.6em;
+      @include v.mq(w428) {
+        font-size: 1.4rem;
+      }
+    }
+    &__career-item {
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      &:nth-child(2) {
+        margin: 1.6em 0;
+      }
+      &:nth-child(4) {
+        margin: 1.6em 0;
+      }
+      @include v.mq(w428) {
+        font-size: 1.4rem;
+      }
+      @include v.mq(w325) {
+        font-size: 1.3rem;
+        word-break: auto-phrase;
+      }
+    }
+    &__career {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0px auto 0 -2px;
+        border-left: 0.25rem solid #e4e4e7;
+        left: 19px;
+        z-index: -1;
+      }
+    }
+    &__career-year {
+      font-size: 10px;
+      color: #292590;
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      line-height: 40px;
+      text-align: center;
+      outline: 1px solid rgb(255, 255, 255);
+      outline-offset: -2px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      background-color: #fff;
+    }
+  }
+
+  @keyframes animate_circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  :root[class='dark-mode'] {
+    .about {
+      &__view-json {
+        color: v.$black;
+        background-color: v.$dark-mode-bg;
+        color: v.$dark-mode-text;
+        border-radius: 3px;
+        border: solid 1px v.$dark-mode-border;
+        padding: 0.2em 1em;
+        &:hover {
+          background-color: v.$light-mode-bg;
+          color: v.$light-mode-text;
+        }
+      }
+    }
+  }
+</style>

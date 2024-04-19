@@ -1,0 +1,155 @@
+<div class="modal-wrap" id="modal_wrap">
+  <div class="modal">
+    <p class="modal__title">Profile</p>
+    <button class="material-symbols-outlined modal__close" id="closeJson"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 -960 960 960"
+        width="24"
+        class="modal__close-icon"
+        ><path
+          d="M256-227.692 227.692-256l224-224-224-224L256-732.308l224 224 224-224L732.308-704l-224 224 224 224L704-227.692l-224-224-224 224Z"
+        ></path></svg
+      ></button
+    >
+    <div class="modal__inner">
+      <p><span>&#123</span></p>
+      <p class="modal__text">
+        <span>"name"</span><span>:</span><span class="modal__value">"liliya"</span>,
+      </p>
+      <p class="modal__text">
+        <span>"gender"</span><span>:</span><span class="modal__value">"male"</span>,
+      </p>
+      <p class="modal__text">
+        <span>"occupation"</span><span>:</span><span class="modal__value">"front-end-engineer"</span
+        >,
+      </p>
+      <p class="modal__text"><span>"skills" : [</span></p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"Html"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"Scss"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"Javascript"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"React"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"Next.js"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"Astro"</span>
+      </p>
+      <p class="modal__text"><span>],</span></p>
+      <p class="modal__text">
+        <span>"hobbies" : [</span>
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"game"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"anime"</span>,
+      </p>
+      <p class="modal__text modal__text--2em">
+        <span class="modal__value">"stroll"</span>
+      </p>
+      <p class="modal__text">
+        <span>]</span>
+      </p>
+      <p><span>&#125</span></p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/variables.scss' as v;
+  .modal-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100svh;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: 0.5s;
+    opacity: 0;
+    z-index: -1;
+    overflow: auto;
+    scrollbar-gutter: stable;
+    &--active {
+      opacity: 1;
+      z-index: 10000;
+    }
+  }
+  .modal {
+    background: #fff;
+    padding: 4em 1.6em;
+    width: fit-content;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    padding: 2em 1.6em;
+    &__title {
+      font-size: 1.6rem;
+      margin-bottom: 0.8em;
+    }
+    &__inner {
+      background-color: #fafafa;
+      width: 300px;
+      font-size: 1.4rem;
+      padding: 1.6rem;
+    }
+    &__close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    &__text {
+      margin-left: 1em;
+      padding: 2px 0;
+      &--2em {
+        margin-left: 2em;
+      }
+    }
+    &__value {
+      color: #188038;
+    }
+  }
+  :root[class='dark-mode'] {
+    .modal {
+      background-color: #1a1b1e;
+      &__inner {
+        background-color: #141517;
+      }
+      &__title {
+        color: #fff;
+      }
+      &__text {
+        color: #fff;
+      }
+      &__close-icon {
+        fill: #fff;
+      }
+    }
+  }
+</style>
+
+<script>
+  const jsonBtn = document.getElementById('jsonView_btn');
+  const json = document.getElementById('modal_wrap');
+  const closeBtn = document.getElementById('closeJson');
+  jsonBtn?.addEventListener('click', () => {
+    json?.classList.add('modal-wrap--active');
+  });
+  closeBtn?.addEventListener('click', () => {
+    json?.classList.remove('modal-wrap--active');
+  });
+</script>

@@ -1,0 +1,44 @@
+@use "../../styles/_variables.scss" as v;
+
+
+  @media (prefers-color-scheme:dark) {
+    body {
+      background-color:v.$dark-mode-bg;
+      color: v.$dark-mode-text;
+      
+    }
+  }
+
+  :root[class="dark-mode"]{
+    background-color:v.$dark-mode-bg;
+    color: v.$dark-mode-text;
+    .about__json {
+      background-color: v.$modal-dark-bg;
+      color: v.$dark-mode-text;
+    }
+    .about__json-inner{
+      background-color:v.$dark-mode-bg;
+    }
+    .pagefind-ui__message{
+      color: v.$dark-mode-text;
+    }
+    .pagefind-ui__result-title{
+      color: v.$dark-mode-text;
+    }
+    .pagefind-ui__result-title.svelte-4xnkmf{
+      color: v.$dark-mode-text;
+    }
+    .pagefind-ui__result{
+      color: v.$dark-mode-text;
+    }
+  }
+  :root[class="light-mode"]{
+      background-color: v.$light-mode-bg;
+      color: v.$black;
+  }
+  :root {
+    &.light-mode {
+      background-color: v.$light-mode-bg;
+      color: v.$light-mode-text;
+    }
+  }

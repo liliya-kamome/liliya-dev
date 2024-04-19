@@ -1,0 +1,110 @@
+<div class="modeButton">
+  <input
+    type="checkbox"
+    name="lightMode"
+    value="lightMode"
+    aria-label="モードを切り替える"
+    aria-pressed="false"
+    class="modeButton__input"
+    id="themeButton"
+    data-state=""
+  />
+  <label for="themeButton">
+    <img
+      src="/assets/light.svg"
+      alt="ライトモードのアイコン"
+      class="modeButton__icon"
+      id="lightMode"
+      width="18"
+      height="18"
+    />
+    <img
+      src="/assets/dark.svg"
+      alt="ダークモードのアイコン"
+      class="modeButton__icon"
+      id="darkMode"
+      width="18"
+      height="18"
+    />
+  </label>
+</div>
+<style lang="scss">
+  @use '../../styles/_variables.scss' as v;
+  .modeButton {
+    @include v.iconBtnStyle();
+    padding-bottom: 0.45em;
+    &__input {
+      display: none;
+    }
+    &__icon {
+      display: none;
+      font-size: 2rem;
+      &--active {
+        display: block;
+      }
+    }
+  }
+  :root[class='dark-mode'] {
+    .modeButton {
+      border: solid 1px #27272a;
+      &__icon {
+        color: #fff;
+      }
+    }
+  }
+</style>
+<script is:inline>
+  const osDark = matchMedia('(prefers-color-scheme: dark)');
+  const inputButton = document.getElementById('themeButton');
+  const light = document.getElementById('lightMode');
+  const dark = document.getElementById('darkMode');
+  function changeDarkMode() {
+    document.documentElement.classList.add('dark-mode');
+    document.documentElement.classList.remove('light-mode');
+    dark?.classList.add('modeButton__icon--active');
+    light?.classList.remove('modeButton__icon--active');
+    inputButton.setAttribute('data-state', 'false');
+    window.localStorage.setItem('mode', 'dark');
+  }
+
+  function changeLightMode() {
+    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove('dark-mode');
+    dark?.classList.remove('modeButton__icon--active');
+    light?.classList.add('modeButton__icon--active');
+    inputButton.setAttribute('data-state', 'true');
+    window.localStorage.setItem('mode', 'light');
+  }
+
+  if (localStorage.getItem('mode') === 'dark') {
+    changeDarkMode();
+  } else if (localStorage.getItem('mode') === 'light') {
+    changeLightMode();
+  }
+  if (osDark) {
+    switch (osDark.matches) {
+      case true:
+        window.localStorage.setItem('mode', 'dark');
+        inputButton.setAttribute('data-state', 'false');
+        break;
+      case false:
+        window.localStorage.setItem('mode', 'light');
+        inputButton.setAttribute('data-state', 'true');
+        break;
+    }
+  }
+  inputButton?.addEventListener('click', () => {
+    const inputButtonState = inputButton.getAttribute('data-state');
+    if (inputButtonState) {
+      switch (inputButtonState) {
+        //lightの時
+        case 'false':
+          changeLightMode();
+          break;
+        //darkの時
+        case 'true':
+          changeDarkMode();
+      }
+    }
+  });
+</script>

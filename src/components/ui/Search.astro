@@ -1,0 +1,227 @@
+---
+import '@pagefind/default-ui/css/ui.css';
+---
+
+<form class="original-search" id="search">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="15"
+    viewBox="0 -960 960 960"
+    width="15"
+    class="original-search__icon"
+    ><path
+      d="M779.385-153.846 528.923-404.307q-30 25.538-69 39.538-39 14-78.385 14-96.1 0-162.665-66.529-66.566-66.529-66.566-162.577t66.529-162.702q66.529-66.654 162.577-66.654 96.049 0 162.702 66.565Q610.769-676.101 610.769-580q0 41.692-14.769 80.692-14.769 39-38.769 66.693l250.462 250.461-28.308 28.308ZM381.538-390.769q79.616 0 134.423-54.808Q570.769-500.385 570.769-580q0-79.615-54.808-134.423-54.807-54.808-134.423-54.808-79.615 0-134.423 54.808Q192.308-659.615 192.308-580q0 79.615 54.807 134.423 54.808 54.808 134.423 54.808Z"
+    ></path></svg
+  >
+  <input type="text" class="original-search__input" placeholder="記事を検索..." />
+</form>
+<div class="sp-search" id="sp_search">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="24"
+    viewBox="0 -960 960 960"
+    width="24"
+    class="sp-search__icon"
+    ><path
+      d="M779.385-153.846 528.923-404.307q-30 25.538-69 39.538-39 14-78.385 14-96.1 0-162.665-66.529-66.566-66.529-66.566-162.577t66.529-162.702q66.529-66.654 162.577-66.654 96.049 0 162.702 66.565Q610.769-676.101 610.769-580q0 41.692-14.769 80.692-14.769 39-38.769 66.693l250.462 250.461-28.308 28.308ZM381.538-390.769q79.616 0 134.423-54.808Q570.769-500.385 570.769-580q0-79.615-54.808-134.423-54.807-54.808-134.423-54.808-79.615 0-134.423 54.808Q192.308-659.615 192.308-580q0 79.615 54.807 134.423 54.808 54.808 134.423 54.808Z"
+    ></path></svg
+  >
+</div>
+<div class="search-overlay" id="search_overlay"></div>
+<div class="search-container" id="search__container">
+  <button class="material-symbols-outlined search-container__close" id="closeSearch"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+      class="search-container__close-icon"
+      ><path
+        d="M256-227.692 227.692-256l224-224-224-224L256-732.308l224 224 224-224L732.308-704l-224 224 224 224L704-227.692l-224-224-224 224Z"
+      ></path></svg
+    ></button
+  >
+  <div class="search search-container__search"></div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/variables.scss' as v;
+  .original-search {
+    width: 200px;
+    height: 31.5px;
+    border-radius: 5px;
+    display: block;
+    border: solid 1px #eeeeee;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0 1em;
+    &__input {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      outline: none;
+    }
+    &__icon {
+      color: #393939;
+      font-size: 1.6rem;
+    }
+    @include v.mq(w428) {
+      display: none;
+    }
+  }
+  .search {
+    @include v.searchStyle();
+  }
+  .sp-search {
+    display: none;
+    @include v.mq(w428) {
+      @include v.iconBtnStyle();
+      padding: 0.3em 0.4em 0;
+      height: 29px;
+      line-height: 20px;
+      &__icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+  .search-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .search-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    min-height: 25em;
+    position: absolute;
+    padding: 3em 1.6em 1.6em 1.6em;
+    border-radius: 10px;
+    top: 350%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+    @include v.mq(w428) {
+      max-width: 320px;
+    }
+    &__close {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+    }
+    &__search {
+      width: 100%;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      padding: 1.6em;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+    }
+    &__icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
+  :root[class='dark-mode'] {
+    .original-search {
+      border: solid 2px #27272a;
+      &__input {
+        &::placeholder {
+          color: #fff;
+        }
+      }
+      &__icon {
+        fill: #fff;
+      }
+    }
+
+    .sp-search {
+      border: solid 1px #27272a;
+      height: 29px;
+      &__icon {
+        fill: #fff;
+      }
+    }
+    .search-overlay {
+      &__container {
+        background-color: #09090b;
+        border: solid 3px #27272a;
+      }
+    }
+
+    .search-container {
+      background-color: #1a1b1e;
+      &__close-icon {
+        fill: #fff;
+      }
+    }
+  }
+</style>
+<script>
+  import { PagefindUI } from '@pagefind/default-ui';
+
+  new PagefindUI({
+    element: '.search',
+    pageSize: 10,
+    excerptLength: 50,
+    showSubResults: true,
+    showImages: false,
+    translations: {
+      placeholder: '記事を検索',
+      clear_search: 'クリア',
+      load_more: 'More',
+      search_label: '',
+      zero_results: '「[SEARCH_TERM]」に一致する記事は見つかりませんでした 🙇‍♂️',
+      many_results: '「[SEARCH_TERM]」の検索結果（[COUNT] 件）',
+      one_result: '「[SEARCH_TERM]」の検索結果（[COUNT] 件）',
+      searching: '「[SEARCH_TERM]」を検索しています...',
+    },
+    debounceTimeoutMs: 400,
+  });
+  const search = document.getElementById('search');
+  const spSearch = document.getElementById('sp_search');
+  const searchContainer = document.getElementById('search__container');
+  const closeSearchBtn = document.getElementById('closeSearch');
+  const searchOverlay = document.getElementById('search_overlay');
+
+  search?.addEventListener('click', () => {
+    searchOverlay?.classList.add('search-overlay--active');
+    searchContainer?.classList.add('search-container--active');
+  });
+
+  spSearch?.addEventListener('click', () => {
+    searchOverlay?.classList.add('search-overlay--active');
+    searchContainer?.classList.add('search-container--active');
+  });
+  closeSearchBtn?.addEventListener('click', () => {
+    searchOverlay?.classList.remove('search-overlay--active');
+    searchContainer?.classList.remove('search-container--active');
+  });
+  searchOverlay?.addEventListener('click', () => {
+    searchOverlay?.classList.remove('search-overlay--active');
+    searchContainer?.classList.remove('search-container--active');
+  });
+</script>
