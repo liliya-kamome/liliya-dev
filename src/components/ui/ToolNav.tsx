@@ -12,7 +12,7 @@ export const ToolNav = () => {
           </a>
         </li>
         <li className={Styles.toolNavItem}>
-          <a href="/about">
+          <a href="/">
             <svg
               width="25"
               height="25"
