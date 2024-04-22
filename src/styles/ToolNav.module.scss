@@ -100,5 +100,15 @@
   }
   .toolNavX {
     fill: #fff;
+    &:hover {
+      fill: #000;
+    }
+  }
+  .toolNavItemActive {
+    a {
+      .b {
+        stroke: #000;
+      }
+    }
   }
 }
