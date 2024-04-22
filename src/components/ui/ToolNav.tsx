@@ -98,7 +98,7 @@ export const ToolNav = (props: any) => {
           </li>
         ) : (
           <li className={Styles.toolNavItem}>
-            <a href="articles/page/1">
+            <a href="/articles/page/1">
               <svg
                 width="25"
                 height="23"
