@@ -100,6 +100,9 @@
   }
   .toolNavX {
     fill: #fff;
+    &:hover {
+      fill: #000;
+    }
   }
   .toolNavItemActive {
     a {
