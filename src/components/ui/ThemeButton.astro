@@ -58,15 +58,13 @@
   const inputButton = document.getElementById('themeButton');
   const light = document.getElementById('lightMode');
   const dark = document.getElementById('darkMode');
-
-	window.addEventListener('DOMContentLoaded', function(){
   function changeDarkMode() {
-    document.documentElement.classList.add('dark-mode');
-    document.documentElement.classList.remove('light-mode');
-    dark?.classList.add('modeButton__icon--active');
-    light?.classList.remove('modeButton__icon--active');
-    inputButton.setAttribute('data-state', 'false');
-    window.localStorage.setItem('mode', 'dark');
+  document.documentElement.classList.add('dark-mode');
+  document.documentElement.classList.remove('light-mode');
+  dark?.classList.add('modeButton__icon--active');
+  light?.classList.remove('modeButton__icon--active');
+  inputButton.setAttribute('data-state', 'false');
+  window.localStorage.setItem('mode', 'dark');
   }
 
   function changeLightMode() {
@@ -78,6 +76,7 @@
     window.localStorage.setItem('mode', 'light');
   }
 
+	window.addEventListener('DOMContentLoaded', function(){
   if (localStorage.getItem('mode') === 'dark') {
     changeDarkMode();
   } else if (localStorage.getItem('mode') === 'light') {
