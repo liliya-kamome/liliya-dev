@@ -6,6 +6,8 @@ import ArticlePostArea from "../components/ArticlePostArea.astro";
 import { ToolNav } from "../components/ui/ToolNav";
 import Footer from "../components/Footer.astro";
 import Mv from "../components/Mv.astro";
+const path = Astro.url.pathname;
+
 ---
 
 <Layout
@@ -18,7 +20,7 @@ import Mv from "../components/Mv.astro";
     <Mv />
     <ArticlePostArea />
   </main>
-  <ToolNav client:only="react" />
+  <ToolNav client:only="react" path={path} />
   <Footer />
 </Layout>
 

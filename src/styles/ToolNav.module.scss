@@ -41,6 +41,29 @@
     }
   }
 }
+.toolNavItemActive {
+  a {
+    display: block;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #f4f4f5;
+    .b {
+      stroke: #000;
+    }
+  }
+  &:nth-of-type(1) {
+    a {
+      font-size: 25px;
+      max-width: 30px;
+      max-height: 30px;
+      font-size: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
 .a,
 .b {
   fill: none;

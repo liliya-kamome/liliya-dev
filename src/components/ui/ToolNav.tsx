@@ -1,66 +1,135 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Styles from '../../styles/ToolNav.module.scss';
-import { useLocation } from 'react-router-dom';
 
-export const ToolNav = () => {
+export const ToolNav = (props: any) => {
+  const path = props.path;
+  const [currentPath, setCurretPath] = useState();
+  console.log(path);
+  useEffect(() => {
+    setCurretPath(path);
+  }, []);
+
   return (
     <nav className={Styles.toolNav}>
       <ul className={Styles.toolNavList}>
-        <li className={Styles.toolNavItem}>
-          <a href="/about" target="_blank" rel="noopener noreferrer">
-            🥨
-          </a>
-        </li>
-        <li className={Styles.toolNavItem}>
-          <a href="/">
-            <svg
-              width="25"
-              height="25"
-              viewBox="0 0 48 48"
-              className={Styles.toolNavIcon}
-              id="home_icon"
-            >
-              <title>192_b_24</title>
-              <rect className={Styles.a} width="48" height="48" />
-              <polyline className={Styles.b} points="4 23 24 6 44 23" />
-              <polyline className={Styles.b} points="9 26 9 42 39 42 39 26" />
-              <polyline className={Styles.b} points="39 12 39 6 34 6" />
-              <polyline className={Styles.b} points="20 42 20 30 28 30 28 42" />
-            </svg>
-          </a>
-        </li>
-        <li className={Styles.toolNavItem}>
-          <a href="articles/page/1">
-            <svg
-              width="25"
-              height="23"
-              viewBox="0 0 48 48"
-              className={Styles.toolNavIcon}
-              id="article_icon"
-            >
-              <defs>
-                <style
-                  scoped
-                >{`.cls-1,.cls-2{fill:none;}.cls-2{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}`}</style>
-              </defs>
-              <title>note_24</title>
-              <g id="レイヤー_2" data-name="Layer 2">
-                <g id="Rectangle">
-                  <rect className={Styles.a} width="48" height="48" />
+        {currentPath === '/about' ? (
+          <li className={Styles.toolNavItemActive}>
+            <a href="/about" className={Styles.isActive}>
+              🥨
+            </a>
+          </li>
+        ) : (
+          <li className={Styles.toolNavItem}>
+            <a href="/about">🥨</a>
+          </li>
+        )}
+
+        {currentPath === '/' ? (
+          <li className={Styles.toolNavItemActive}>
+            <a href="/" className={Styles.isActive}>
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 48 48"
+                className={Styles.toolNavIcon}
+                id="home_icon"
+              >
+                <title>192_b_24</title>
+                <rect className={Styles.a} width="48" height="48" />
+                <polyline className={Styles.b} points="4 23 24 6 44 23" />
+                <polyline className={Styles.b} points="9 26 9 42 39 42 39 26" />
+                <polyline className={Styles.b} points="39 12 39 6 34 6" />
+                <polyline className={Styles.b} points="20 42 20 30 28 30 28 42" />
+              </svg>
+            </a>
+          </li>
+        ) : (
+          <li className={Styles.toolNavItem}>
+            <a href="/">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 48 48"
+                className={Styles.toolNavIcon}
+                id="home_icon"
+              >
+                <title>192_b_24</title>
+                <rect className={Styles.a} width="48" height="48" />
+                <polyline className={Styles.b} points="4 23 24 6 44 23" />
+                <polyline className={Styles.b} points="9 26 9 42 39 42 39 26" />
+                <polyline className={Styles.b} points="39 12 39 6 34 6" />
+                <polyline className={Styles.b} points="20 42 20 30 28 30 28 42" />
+              </svg>
+            </a>
+          </li>
+        )}
+        {currentPath === 'articles' ? (
+          <li className={Styles.toolNavItemActive}>
+            <a href="articles/page/1" className={Styles.isActive}>
+              <svg
+                width="25"
+                height="23"
+                viewBox="0 0 48 48"
+                className={Styles.toolNavIcon}
+                id="article_icon"
+              >
+                <defs>
+                  <style
+                    scoped
+                  >{`.cls-1,.cls-2{fill:none;}.cls-2{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}`}</style>
+                </defs>
+                <title>note_24</title>
+                <g id="レイヤー_2" data-name="Layer 2">
+                  <g id="Rectangle">
+                    <rect className={Styles.a} width="48" height="48" />
+                  </g>
+                  <g id="icon_data">
+                    <path
+                      className={Styles.b}
+                      d="M40,8.84V44a2,2,0,0,1-2,2H10a2,2,0,0,1-2-2V4a2,2,0,0,1,2-2H38Z"
+                    />
+                    <line className={Styles.b} x1="18" y1="12" x2="30" y2="12" />
+                    <line className={Styles.b} x1="18" y1="20" x2="30" y2="20" />
+                    <line className={Styles.b} x1="18" y1="28" x2="24" y2="28" />
+                  </g>
                 </g>
-                <g id="icon_data">
-                  <path
-                    className={Styles.b}
-                    d="M40,8.84V44a2,2,0,0,1-2,2H10a2,2,0,0,1-2-2V4a2,2,0,0,1,2-2H38Z"
-                  />
-                  <line className={Styles.b} x1="18" y1="12" x2="30" y2="12" />
-                  <line className={Styles.b} x1="18" y1="20" x2="30" y2="20" />
-                  <line className={Styles.b} x1="18" y1="28" x2="24" y2="28" />
+              </svg>
+            </a>
+          </li>
+        ) : (
+          <li className={Styles.toolNavItem}>
+            <a href="articles/page/1">
+              <svg
+                width="25"
+                height="23"
+                viewBox="0 0 48 48"
+                className={Styles.toolNavIcon}
+                id="article_icon"
+              >
+                <defs>
+                  <style
+                    scoped
+                  >{`.cls-1,.cls-2{fill:none;}.cls-2{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}`}</style>
+                </defs>
+                <title>note_24</title>
+                <g id="レイヤー_2" data-name="Layer 2">
+                  <g id="Rectangle">
+                    <rect className={Styles.a} width="48" height="48" />
+                  </g>
+                  <g id="icon_data">
+                    <path
+                      className={Styles.b}
+                      d="M40,8.84V44a2,2,0,0,1-2,2H10a2,2,0,0,1-2-2V4a2,2,0,0,1,2-2H38Z"
+                    />
+                    <line className={Styles.b} x1="18" y1="12" x2="30" y2="12" />
+                    <line className={Styles.b} x1="18" y1="20" x2="30" y2="20" />
+                    <line className={Styles.b} x1="18" y1="28" x2="24" y2="28" />
+                  </g>
                 </g>
-              </g>
-            </svg>
-          </a>
-        </li>
+              </svg>
+            </a>
+          </li>
+        )}
         <li className={Styles.toolNavItem}>
           <a href="https://twitter.com/liliya_kamome">
             <svg
