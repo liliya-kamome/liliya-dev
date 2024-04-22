@@ -59,16 +59,7 @@
   const light = document.getElementById('lightMode');
   const dark = document.getElementById('darkMode');
 
-(function() {
-  document.documentElement.classList.add('light-mode');
-  document.documentElement.classList.remove('dark-mode');
-  dark?.classList.remove('modeButton__icon--active');
-  light?.classList.add('modeButton__icon--active');
-  inputButton.setAttribute('data-state', 'true');
-  window.localStorage.setItem('mode', 'light');
-})();
-
-
+	window.addEventListener('DOMContentLoaded', function(){
   function changeDarkMode() {
     document.documentElement.classList.add('dark-mode');
     document.documentElement.classList.remove('light-mode');
@@ -118,4 +109,6 @@
       }
     }
   });
+		});
+
 </script>
