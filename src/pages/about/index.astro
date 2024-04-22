@@ -5,6 +5,8 @@ import Footer from '../../components/Footer.astro';
 import Modal from '../../components/ui/Modal.astro';
 import Layout from '../../layouts/Layout.astro';
 import { ToolNav } from '../../components/ui/ToolNav';
+const path = Astro.url.pathname;
+
 ---
 
 <Layout title="このサイトについて | liliya.dev" ogTitle="about" desc="このサイトについて">
@@ -37,7 +39,7 @@ import { ToolNav } from '../../components/ui/ToolNav';
       </li>
     </ul>
   </main>
-  <ToolNav />
+  <ToolNav client:only="react" path={path} />
   <Footer />
 </Layout>
 

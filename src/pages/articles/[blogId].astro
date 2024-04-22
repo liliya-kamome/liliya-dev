@@ -22,7 +22,9 @@ export async function getStaticPaths() {
 const { blogId } = Astro.params;
 const { blogTitle } = Astro.props;
 const blog = await getBlogDetail(blogId as string);
-const path = Astro.url.pathname;
+const pathName = Astro.url.pathname;
+const pathArr = pathName.split('/');
+const path = pathArr[1];
 const currentPath = 'articles';
 ---
 
@@ -36,6 +38,6 @@ const currentPath = 'articles';
     <Breadcrumb list={[currentPath, blogTitle]} path={path} />
     <div class="post" set:html={blog.content[0].html} />
   </main>
-  <ToolNav />
+  <ToolNav client:only="react" path={path} />
   <Footer />
 </Layout>
