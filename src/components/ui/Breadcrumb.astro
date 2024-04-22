@@ -22,7 +22,7 @@ const { list } = Astro.props;
   </ol>
 
   <style lang="scss">
-    @use '../../styles/variables.scss' as v;
+    @use '../../styles/_variables.scss' as v;
     .breadcrumb {
       margin-bottom: 3em;
       &__item {
@@ -38,6 +38,9 @@ const { list } = Astro.props;
             content: '<';
             position: absolute;
             left: -1.6em;
+            @include v.mq(w428) {
+              left: -1.5em;
+            }
           }
         }
         &:nth-child(3) {
@@ -45,12 +48,6 @@ const { list } = Astro.props;
             content: '<';
             position: absolute;
             left: -1.3em;
-          }
-        }
-        &:last-child {
-          @include v.mq(w428) {
-            display: block;
-            margin-left: 1.3em;
           }
         }
       }
