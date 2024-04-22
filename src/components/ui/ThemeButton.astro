@@ -58,30 +58,6 @@
   const inputButton = document.getElementById('themeButton');
   const light = document.getElementById('lightMode');
   const dark = document.getElementById('darkMode');
-  function changeDarkMode() {
-  document.documentElement.classList.add('dark-mode');
-  document.documentElement.classList.remove('light-mode');
-  dark?.classList.add('modeButton__icon--active');
-  light?.classList.remove('modeButton__icon--active');
-  inputButton.setAttribute('data-state', 'false');
-  window.localStorage.setItem('mode', 'dark');
-  }
-
-  function changeLightMode() {
-    document.documentElement.classList.add('light-mode');
-    document.documentElement.classList.remove('dark-mode');
-    dark?.classList.remove('modeButton__icon--active');
-    light?.classList.add('modeButton__icon--active');
-    inputButton.setAttribute('data-state', 'true');
-    window.localStorage.setItem('mode', 'light');
-  }
-
-	window.addEventListener('DOMContentLoaded', function(){
-  if (localStorage.getItem('mode') === 'dark') {
-    changeDarkMode();
-  } else if (localStorage.getItem('mode') === 'light') {
-    changeLightMode();
-  }
   if (osDark) {
     switch (osDark.matches) {
       case true:
@@ -94,6 +70,31 @@
         break;
     }
   }
+
+	
+  function changeDarkMode() {
+      document.documentElement.classList.add('dark-mode');
+      document.documentElement.classList.remove('light-mode');
+      dark?.classList.add('modeButton__icon--active');
+      light?.classList.remove('modeButton__icon--active');
+      inputButton.setAttribute('data-state', 'false');
+      window.localStorage.setItem('mode', 'dark');
+  }
+
+  function changeLightMode() {
+    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove('dark-mode');
+    dark?.classList.remove('modeButton__icon--active');
+    light?.classList.add('modeButton__icon--active');
+    inputButton.setAttribute('data-state', 'true');
+    window.localStorage.setItem('mode', 'light');
+  }
+  if (localStorage.getItem('mode') === 'dark') {
+    changeDarkMode();
+  } else if (localStorage.getItem('mode') === 'light') {
+    changeLightMode();
+  }
+
   inputButton?.addEventListener('click', () => {
     const inputButtonState = inputButton.getAttribute('data-state');
     if (inputButtonState) {
@@ -108,6 +109,6 @@
       }
     }
   });
-		});
+
 
 </script>
