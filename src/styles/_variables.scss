@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* color */
 $light-mode-bg:#fff;
 $dark-mode-text:#fff;
@@ -106,11 +108,10 @@ $breakpoint: (
 --pagefind-ui-font: sans-serif;
 }
 @mixin iconBtnStyle{
-display: block;
-border: solid 1px #eeeeee;
-padding: 0.5em 0.5em 0 0.5em;
-border-radius: 5px;
-
+  display: block;
+  border: solid 1px #eeeeee;
+  padding: 0.5em 0.5em 0 0.5em;
+  border-radius: 5px;
 }
 
 
