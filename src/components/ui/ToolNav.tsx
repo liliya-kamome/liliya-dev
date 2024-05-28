@@ -131,7 +131,7 @@ export const ToolNav = (props: any) => {
           </li>
         )}
         <li className={Styles.toolNavItem}>
-          <a href="https://twitter.com/liliya_kamome">
+          <a href="https://twitter.com/liliya_kamome" aria-label='liliyaのXへのリンク'>
             <svg
               width="20"
               height="20"
