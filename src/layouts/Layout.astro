@@ -22,7 +22,7 @@ const { ogTitle } = Astro.props;
     <meta property="og:description" content={desc} />
     <meta property="og:site_name" content="liliya.dev" />
     <meta property="og:image" content="https://www.lilia.dev/assets/ogp.png" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
     <link
       rel="stylesheet"
       media="print"
@@ -49,7 +49,19 @@ const { ogTitle } = Astro.props;
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
     />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E09C7MZLGN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-E09C7MZLGN');
+    </script>
   </head>
+  <!-- Google tag (gtag.js) -->
+
   <body>
     <slot />
     <!-- Prism.js のコアファイル -->
@@ -128,9 +140,11 @@ const { ogTitle } = Astro.props;
   }
   .post-container__h2 {
     font-size: 2.3rem;
-    font-weight: 300;
+    font-weight: bold;
     margin-bottom: 1em;
     margin-top: 2em;
+    border-left: solid 3px;
+    padding-left: 10px;
   }
   @media screen and (max-width: 480px) {
     .post-container__h2 {
@@ -140,12 +154,10 @@ const { ogTitle } = Astro.props;
       margin-top: 2em;
     }
   }
-  @media screen {
-  }
   .post-container__h3 {
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 300;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     margin-top: 2em;
   }
   @media screen and (max-width: 480px) {
@@ -153,6 +165,14 @@ const { ogTitle } = Astro.props;
       font-size: 1.7rem;
     }
   }
+
+  .post-container__h4 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+    margin-top: 2em;
+  }
+
   .post-container__subTitle {
     font-size: 1.8rem;
     font-weight: 300;
@@ -217,6 +237,32 @@ const { ogTitle } = Astro.props;
   .pagefind-ui__result-title {
     font-size: 1.6rem;
   }
+  .post-container__dt {
+    width: fit-content;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    border-bottom: solid 1px #c669d9;
+  }
+  .post-container__dd {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  @media screen and (max-width: 480px) {
+    .post-container__dd {
+      font-size: 1.4rem;
+    }
+  }
+  .post-container__marker {
+    background: linear-gradient(transparent 60%, #ff6 60%);
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    font-size: 14px;
+  }
+
   .w1024-block {
     display: none;
   }
