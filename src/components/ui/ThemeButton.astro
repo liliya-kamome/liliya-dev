@@ -58,7 +58,6 @@
   const inputButton = document.getElementById('themeButton');
   const light = document.getElementById('lightMode');
   const dark = document.getElementById('darkMode');
-
   function changeDarkMode() {
     document.documentElement.classList.add('dark-mode');
     document.documentElement.classList.remove('light-mode');
@@ -89,6 +88,7 @@
         inputButton.setAttribute('data-state', 'false');
         break;
       case false:
+        window.localStorage.setItem('mode', 'light');
         inputButton.setAttribute('data-state', 'true');
         break;
     }
