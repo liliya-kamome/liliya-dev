@@ -10,20 +10,22 @@
     data-state=""
   />
   <label for="themeButton">
-    <object
-      type="image/svg+xml"
-      data="/assets/light.svg"
+    <img
+      src="/assets/light.svg"
+      alt="ライトモードのアイコン"
       class="modeButton__icon"
       id="lightMode"
       width="18"
-      height="18"></object>
-    <object
-      type="image/svg+xml"
-      data="/assets/dark.svg"
+      height="18"
+    />
+    <img
+      src="/assets/dark.svg"
+      alt="ダークモードのアイコン"
       class="modeButton__icon"
       id="darkMode"
       width="18"
-      height="18"></object>
+      height="18"
+    />
   </label>
 </div>
 <style lang="scss">
@@ -37,7 +39,6 @@
     &__icon {
       display: none;
       font-size: 2rem;
-      width: 100%;
       &--active {
         display: block;
       }
