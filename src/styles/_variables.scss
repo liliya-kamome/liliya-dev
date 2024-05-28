@@ -172,7 +172,7 @@ margin: 0 auto;
 :root[class="dark-mode"]{
   .article-posts{
       &__item{
-        border: solid 3px $dark-mode-border;
+        border: solid 1px $dark-mode-border;
         border-radius: 1em;
         color: $dark-mode-text;
       }  
