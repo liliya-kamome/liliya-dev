@@ -58,6 +58,22 @@
   const inputButton = document.getElementById('themeButton');
   const light = document.getElementById('lightMode');
   const dark = document.getElementById('darkMode');
+
+  //1度だけrefers-color-schemeを判別する
+  if (localStorage.getItem('login') !== 'true') {
+    if (osDark) {
+      switch (osDark.matches) {
+        case true:
+          window.localStorage.setItem('mode', 'dark');
+          break;
+        case false:
+          window.localStorage.setItem('mode', 'light');
+          break;
+      }
+    }
+    window.localStorage.setItem('login', 'true');
+  }
+  //ダークモードにするための処理
   function changeDarkMode() {
     document.documentElement.classList.add('dark-mode');
     document.documentElement.classList.remove('light-mode');
@@ -66,7 +82,7 @@
     inputButton.setAttribute('data-state', 'false');
     window.localStorage.setItem('mode', 'dark');
   }
-
+  //ライトモードにするための処理
   function changeLightMode() {
     document.documentElement.classList.add('light-mode');
     document.documentElement.classList.remove('dark-mode');
@@ -81,30 +97,12 @@
   } else if (localStorage.getItem('mode') === 'light') {
     changeLightMode();
   }
-  if (osDark) {
-    switch (osDark.matches) {
-      case true:
-        window.localStorage.setItem('mode', 'dark');
-        inputButton.setAttribute('data-state', 'false');
-        break;
-      case false:
-        window.localStorage.setItem('mode', 'light');
-        inputButton.setAttribute('data-state', 'true');
-        break;
-    }
-  }
+
   inputButton?.addEventListener('click', () => {
-    const inputButtonState = inputButton.getAttribute('data-state');
-    if (inputButtonState) {
-      switch (inputButtonState) {
-        //lightの時
-        case 'false':
-          changeLightMode();
-          break;
-        //darkの時
-        case 'true':
-          changeDarkMode();
-      }
+    if (localStorage.getItem('mode') === 'light') {
+      changeDarkMode();
+    } else if (localStorage.getItem('mode') === 'dark') {
+      changeLightMode();
     }
   });
 </script>
