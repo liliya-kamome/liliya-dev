@@ -217,10 +217,10 @@ import '@pagefind/default-ui/css/ui.css';
   search?.addEventListener('click', () => {
     searchOverlay?.classList.add('search-overlay--active');
     searchContainer?.classList.add('search-container--active');
-    defaultInput?.blur();
-    if (customInput.length > 0 && customInput[0] instanceof HTMLInputElement) {
-      customInput[0].focus();
-    }
+    // defaultInput?.blur();
+    // if (customInput.length > 0 && customInput[0] instanceof HTMLInputElement) {
+    //   customInput[0].focus();
+    // }
   });
 
   spSearch?.addEventListener('click', () => {
