@@ -208,6 +208,7 @@ import '@pagefind/default-ui/css/ui.css';
   });
   const search = document.getElementById('search');
   const defaultInput = document.getElementById('default_input');
+  const customInput = document.getElementsByClassName('pagefind-ui__search-input ');
   const spSearch = document.getElementById('sp_search');
   const searchContainer = document.getElementById('search__container');
   const closeSearchBtn = document.getElementById('closeSearch');
@@ -217,7 +218,9 @@ import '@pagefind/default-ui/css/ui.css';
     searchOverlay?.classList.add('search-overlay--active');
     searchContainer?.classList.add('search-container--active');
     defaultInput?.blur();
-    console.log(defaultInput);
+    if (customInput.length > 0 && customInput[0] instanceof HTMLInputElement) {
+      customInput[0].focus();
+    }
   });
 
   spSearch?.addEventListener('click', () => {
