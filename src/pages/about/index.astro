@@ -6,7 +6,6 @@ import Modal from '../../components/ui/Modal.astro';
 import Layout from '../../layouts/Layout.astro';
 import { ToolNav } from '../../components/ui/ToolNav';
 const path = Astro.url.pathname;
-
 ---
 
 <Layout title="このサイトについて | liliya.dev" ogTitle="about" desc="このサイトについて">
@@ -20,7 +19,7 @@ const path = Astro.url.pathname;
     <h2 class="about__h2">このサイトについて</h2>
     <p class="about__text">
       このサイトは、"Astro" + "React" + "microCMS" + "Vercle"によって作成されています。<br
-      />週に1記事の投稿を目安にフロントエンド系の記事を投稿していきます。
+      />自分の興味のある内容を投稿します。
     </p>
     <p class="about__text">
       主に個人的な知識のアウトプットのために運営をするものであり、個人の意見を反映しておりますので記事の修正、指摘等ございましたらX(旧Twitter)のDMにお手数ですがご連絡いただけますと幸甚です。
@@ -142,6 +141,7 @@ const path = Astro.url.pathname;
     }
     &__career {
       position: relative;
+      z-index: 1;
       &::before {
         content: '';
         position: absolute;
