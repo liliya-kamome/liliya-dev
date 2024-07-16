@@ -34,7 +34,7 @@
   }
   :root[class="light-mode"]{
       background-color: v.$light-mode-bg;
-      color: v.$black;
+      color: v.$light-mode-text;
   }
   :root {
     &.light-mode {
