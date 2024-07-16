@@ -34,7 +34,12 @@
   }
   :root[class="light-mode"]{
       background-color: v.$light-mode-bg;
-      color: v.$light-mode-text;
+      color: v.$dark-mode-text;
+      body {
+        background-color: v.$light-mode-bg;
+        color: v.$dark-mode-text;
+        
+      }
   }
   :root {
     &.light-mode {
