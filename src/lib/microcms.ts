@@ -20,7 +20,10 @@ export type Blog = {
   description:string;
   eyecatch: {
     url: string;
-  };
+  }
+  category: {
+    category:string;
+  }
 };
 export type BlogResponse = {
   totalCount: number;

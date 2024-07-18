@@ -1,11 +1,11 @@
 ---
-import dayjs from "dayjs";
-import { getBlogs } from "../lib/microcms";
-import SectionTitle from "./ui/SectionTitle.astro";
-import ViewMore from "./ui/ViewMore.astro";
+import dayjs from 'dayjs';
+import { getBlogs } from '../lib/microcms';
+import SectionTitle from './ui/SectionTitle.astro';
+import ViewMore from './ui/ViewMore.astro';
 
 const blogs = await getBlogs({
-  fields: ["title", "id", "content", "eyecatch", "description", "publishedAt"],
+  fields: ['title', 'id', 'content', 'eyecatch', 'description', 'publishedAt', 'category'],
   limit: 3,
 });
 const posts = blogs.contents;
@@ -18,7 +18,7 @@ const posts = blogs.contents;
       posts.map((post) => {
         return (
           <li class="article-posts__item">
-            <a href={"/articles/" + `${post.id}`}>
+            <a href={'/articles/' + `${post.id}`}>
               <img
                 src={post.eyecatch.url}
                 alt="記事のサムネイル"
@@ -26,12 +26,13 @@ const posts = blogs.contents;
                 width="284"
                 height="160"
               />
+              <p class="article-posts__category" data-pagefind-index-attrs>
+                {post.category.category}
+              </p>
               <p class="article-posts__title" data-pagefind-index-attrs>
                 {post.title}
               </p>
-              <p class="article-posts__published">
-                {dayjs(post.publishedAt).format("YYYY/MM/DD")}
-              </p>
+              <p class="article-posts__published">{dayjs(post.publishedAt).format('YYYY/MM/DD')}</p>
             </a>
           </li>
         );
@@ -42,7 +43,7 @@ const posts = blogs.contents;
 </div>
 
 <style lang="scss">
-  @use "../styles/_variables.scss" as v;
+  @use '../styles/_variables.scss' as v;
   .article-posts {
     @include v.article-list();
   }
