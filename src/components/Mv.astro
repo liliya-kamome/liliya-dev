@@ -1,5 +1,5 @@
 ---
-import Cube from "./Cube.astro";
+import Cube from './Cube.astro';
 ---
 
 <div class="mv">
@@ -32,7 +32,7 @@ import Cube from "./Cube.astro";
 </div>
 
 <style lang="scss">
-  @use "../styles/variables.scss" as v;
+  @use '../styles/variables.scss' as v;
 
   .mv {
     padding-top: 7em;
@@ -95,7 +95,6 @@ import Cube from "./Cube.astro";
       padding: 0 2em 0 0.8em;
       display: inline-block;
       margin-top: 1em;
-      transition: 0.5s all;
       position: relative;
       @include v.mq(w428) {
         line-height: 27px;
@@ -111,13 +110,12 @@ import Cube from "./Cube.astro";
     &__link-arrow {
       font-size: 1.3rem;
       position: absolute;
-      transition: all 0.5s;
       right: 6%;
       top: 10%;
       display: block;
     }
   }
-  :root[class="dark-mode"] {
+  :root[class='dark-mode'] {
     .mv-inner {
       color: v.$dark-mode-text;
       &__title {

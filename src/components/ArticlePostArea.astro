@@ -47,4 +47,25 @@ const posts = blogs.contents;
   .article-posts {
     @include v.article-list();
   }
+
+  :root[class='dark-mode'] {
+    .article-posts {
+      &__item {
+        border: solid 1px v.$dark-mode-border;
+        border-radius: 1em;
+        color: v.$dark-mode-text;
+      }
+
+      &__category {
+        font-size: 1.4rem;
+        max-height: 20px;
+        line-height: 18px;
+        color: v.$dark-mode-text;
+        width: fit-content;
+        padding: 0 10px;
+        border-radius: 2px;
+        margin: 1em 0 0 0;
+      }
+    }
+  }
 </style>
